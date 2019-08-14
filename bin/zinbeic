@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+# vim: filetype=ruby
+
+self_file =
+  if File.symlink?(__FILE__)
+    require 'pathname'
+    Pathname.new(__FILE__).realpath
+  else
+    __FILE__
+  end
+$:.unshift(File.dirname(self_file) + '/../lib')
+
+start_time = Time.now
+require 'zinbei'
+end_time = (Time.now - start_time)
+print 'Performance： '
+print end_time
+puts ' sec.'
+
+__END__
